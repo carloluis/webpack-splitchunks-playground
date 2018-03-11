@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npm run clean && webpack --config webpack.config.so.js",
+    "dedup": "npm run clean && webpack",
     "clean": "rimraf dist"
   },
   "keywords": [],
