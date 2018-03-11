@@ -36,6 +36,42 @@ Built at: 3/11/2018 6:00:15 PM
 runtime.bundle.js  4.93 KiB       4  [emitted]         runtime
 ```
 
+<details>
+
+* `a.bundle.js` contains:
+
+```js
+// react, react-dom
+console.log('core module');     // from core-module-b.js
+console.log('core module b');   // from core-module-b.js
+console.log('non-core module'); // from non-core-module.js
+```
+
+* `b.bundle.js` contains:
+
+```js
+// react, react-dom
+console.log('core module');     // from core-module-b.js
+console.log('core module b');   // from core-module-b.js
+console.log('non-core module b'); // from non-core-module-b.js
+```
+
+* `core.bundle.js`
+
+```js
+// react, react-dom
+console.log('core module');
+```
+
+* `core.bundleB.js`
+
+```js
+// react, react-dom
+console.log('core module b');
+```
+
+</details>
+
 ## Current build
 > new webpack config `webpack.config.js`
 
@@ -58,3 +94,37 @@ a~b~coreB.bundle.js  161 bytes       5  [emitted]         a~b~coreB
  a~b~core.bundle.js  159 bytes       6  [emitted]         a~b~core
   runtime.bundle.js   4.93 KiB       7  [emitted]         runtime
 ```
+
+<details>
+
+* `a.bundle.js` contains:
+
+```js
+console.log('non-core module'); // from non-core-module.js
+// and references to dependencies
+```
+
+* `b.bundle.js` contains:
+
+```js
+console.log('non-core module b'); // from non-core-module-b.js
+// and references to dependencies
+```
+
+* `a~b~core.bundle.js`
+
+```js
+console.log('core module');
+```
+
+* `a~b~coreB.bundle.js`
+
+```js
+console.log('core module b');
+```
+
+* `vendors.bundle.js`: (`react`, `react-dom`)
+* `core.bundle.js`: (references)
+* `coreB.bundle.js`: (references)
+
+</details>
