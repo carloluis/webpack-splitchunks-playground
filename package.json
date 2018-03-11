@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm run clean && webpack",
-    "clean": "rimraf dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run clean && webpack --config webpack.config.so.js",
+    "clean": "rimraf dist"
   },
   "keywords": [],
   "author": "",
